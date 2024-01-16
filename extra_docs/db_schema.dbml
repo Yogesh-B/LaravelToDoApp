@@ -1,0 +1,18 @@
+table lists {
+  id serial [pk]
+  list_name varchar(100)
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+
+table tasks {
+  id serial [pk]
+  list_id integer [ref: > lists.id]
+  description varchar(500)
+  is_completed boolean
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+}
+
