@@ -1,0 +1,10 @@
+#What we would focus on first?? >I guess setup DB first and then make APIs.
+#DB first.
+[x] >create SQL file and import it.
+    - postgres as DB. make docker/docker-compose for making DB instance. later we can use it to make whole app.
+[ ] >then create migrations (WIP)
+
+>then models
+>then controllers
+>then APIs
+
