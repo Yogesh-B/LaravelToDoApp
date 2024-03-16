@@ -6,7 +6,7 @@ table lists {
   deleted_at timestamp
 }
 
-table tasks {
+table notes {
   id serial [pk]
   list_id integer [ref: > lists.id]
   description varchar(500)
