@@ -1,0 +1,10 @@
+services:
+  db:
+    image: "postgres:16-alpine"
+    ports:
+      - "5432:5432"
+    environment:
+    # TODO: use environment variables, not static values
+      - POSTGRES_DB=todo_app
+      - POSTGRES_USER=todo_app
+      - POSTGRES_PASSWORD=1234
