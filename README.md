@@ -14,3 +14,4 @@ Just revising Laravel and Nuxt skills, and also learning docker.
 
 ## Extra stuff
 1. Make it as complex as you can! with only one purpose... learning!!! do not care about usecase!
+  - like we can add chat feature, community features like sharing, followers, likes(kind of notes facebook)
