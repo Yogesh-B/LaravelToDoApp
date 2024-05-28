@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecordListController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+#TODO: add authenticaation
+#TODO: separate api directory for api controllers
+
+Route::get('/lists',[RecordListController::class,'index']);
+Route::post('/lists',[RecordListController::class,'store']);
+
