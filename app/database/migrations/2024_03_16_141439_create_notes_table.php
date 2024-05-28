@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id('id')->autoIncrement();
+            $table->unsignedBigInteger('list_id');
             $table->foreign('list_id')->references('id')->on('record_lists');
             $table->string('description',100);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

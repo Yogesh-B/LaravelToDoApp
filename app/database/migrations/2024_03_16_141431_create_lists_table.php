@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id')->autoIncrement();
             $table->string('list_name',100);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
