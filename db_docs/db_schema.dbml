@@ -1,4 +1,4 @@
-table lists {
+table record_lists {
   id serial [pk]
   list_name varchar(100)
   created_at timestamp
@@ -8,7 +8,7 @@ table lists {
 
 table notes {
   id serial [pk]
-  list_id integer [ref: > lists.id]
+  list_id integer [ref: > record_lists.id]
   description varchar(500)
   is_completed boolean
   created_at timestamp

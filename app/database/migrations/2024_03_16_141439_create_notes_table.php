@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('notes', function (Blueprint $table) {
-            $table->id();
+            $table->id('id')->autoIncrement();
+            $table->foreign('list_id')->references('id')->on('record_lists');
+            $table->string('description',100);
             $table->timestamps();
         });
     }
