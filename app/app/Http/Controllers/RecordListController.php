@@ -13,4 +13,14 @@ class RecordListController extends Controller
 
         return RecordList::all();
     }
+
+
+    public function store(Request $request){
+        #TODO: may want to use save method, not sure about what to use
+        $recordList = RecordList::create([
+            'list_name' => $request->list_name,
+        ]);
+
+        return $recordList->id; 
+    }
 }
