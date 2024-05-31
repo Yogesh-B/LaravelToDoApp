@@ -28,11 +28,23 @@ class SuccessResponse extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-            "success" => true,
-            "message" => $this->message,
-            "data" => $this->data,
-        ];
+        $dataArray = $this->data instanceof JsonResource ? $this->data->toArray($request) : $this->data;
+
+        if ($this->data instanceof JsonResource){
+            return [
+                "success" => true,
+                "message" => $this->message,
+                "data" => $dataArray['data'],
+                "meta" => $dataArray['meta'] ?? null, // Include meta if available
+            ];
+        }else{
+            return [
+                "success" => true,
+                "message" => $this->message,
+                "data" => $dataArray,
+            ];
+        }
+
     }
 
     public function withResponse(Request $request, JsonResponse $response)
