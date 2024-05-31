@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\FailureResponse;
+use App\Http\Resources\RecordListCollection;
 use App\Http\Resources\SuccessResponse;
 use App\Models\RecordList;
 use Illuminate\Http\Request;
@@ -11,10 +12,11 @@ use Illuminate\Http\Response;
 class RecordListController extends Controller
 {
     #TODO: add swagger docs
-    public function index(){
+    public function index(Request $request){
         #TODO: try catch or handle in handler for http requests
-        #TODO: create collection resource for the models pagination as well
-        return new SuccessResponse("Record Lists fetched",RecordList::all());
+        $perPage = $request->input('per_page', 15);
+
+        return new SuccessResponse("Record Lists fetched",new RecordListCollection(RecordList::paginate($perPage)));
     }
 
 
