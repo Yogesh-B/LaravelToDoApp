@@ -15,9 +15,9 @@ class SuccessResponse extends JsonResource
     protected $status = null;
 
 
-    public function __construct($message,$data,$status=Response::HTTP_OK) {
-        $this->message = $message;
+    public function __construct($data,$message="Operation sucessful",$status=Response::HTTP_OK) {
         $this->data = $data;
+        $this->message = $message;
         $this->status = $status;
     }
 

@@ -20,12 +20,17 @@ class RecordListController extends Controller
     }
 
 
+    public function show(RecordList $recordList){
+        return new SuccessResponse($recordList,"RecordList retrieved");
+    }
+
+
     public function store(Request $request){
         #REVIEW: may want to use save method, not sure about what to use
         $recordList = RecordList::create([
             'list_name' => $request->list_name,
         ]);
 
-        return new SuccessResponse("Record List created successfully",["id"=>$recordList->id],Response::HTTP_CREATED); 
+        return new SuccessResponse(["id"=>$recordList->id],"Record List created successfully",Response::HTTP_CREATED); 
     }
 }
