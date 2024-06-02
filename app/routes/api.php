@@ -25,4 +25,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/lists',[RecordListController::class,'index']);
 Route::post('/lists',[RecordListController::class,'store']);
+Route::get('/lists/{recordList}',[RecordListController::class,'show']);
 

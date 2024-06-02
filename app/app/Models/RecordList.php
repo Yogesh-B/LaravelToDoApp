@@ -11,6 +11,7 @@ class RecordList extends Model
     use HasFactory;
     use SoftDeletes;
 
+    #REVIEW: we could used some 'key' here, which we use in route for retrieving a row
     protected $fillable = [
         'list_name',
     ];

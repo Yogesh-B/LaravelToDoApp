@@ -15,9 +15,9 @@ class FailureResponse extends JsonResource
     protected $status = null;
     
 
-    public function __construct($message,$errors,$status=Response::HTTP_INTERNAL_SERVER_ERROR) {
-        $this->message = $message;
+    public function __construct($errors,$message="Operation failed",$status=Response::HTTP_INTERNAL_SERVER_ERROR) {
         $this->errors = $errors;
+        $this->message = $message;
         $this->status = $status;
     }
 
