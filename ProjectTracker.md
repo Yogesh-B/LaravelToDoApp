@@ -1,5 +1,5 @@
 # WIP
-lists....show API
+lists....show API✅
 
 notes....
     .. index, show, create methods

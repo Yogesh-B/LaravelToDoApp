@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\RecordListController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,4 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/lists',[RecordListController::class,'index']);
 Route::post('/lists',[RecordListController::class,'store']);
 Route::get('/lists/{recordList}',[RecordListController::class,'show']);
+
+
+Route::get('/notes',[NoteController::class,'index']);
+Route::post('/notes/{recordList}',[NoteController::class,'store']);
+Route::get('/notes/{recordList}',[NoteController::class,'show']);
 
