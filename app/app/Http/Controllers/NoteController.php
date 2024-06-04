@@ -14,7 +14,7 @@ class NoteController extends Controller
         public function index(Request $request){
             $perPage = $request->input('per_page', 15);
     
-            return new SuccessResponse("Notes fetched",new NoteCollection(Note::paginate($perPage)));
+            return new SuccessResponse( NoteCollection(Note::paginate($perPage)),"Notes fetched");
         }
     
     
@@ -25,7 +25,6 @@ class NoteController extends Controller
     
         public function store(RecordList $recordList, Request $request){
 
-            dd($recordList, $request);
             $listId = $recordList->id;
 
             $recordList = Note::create([
