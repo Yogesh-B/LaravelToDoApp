@@ -31,5 +31,5 @@ Route::get('/lists/{recordList}',[RecordListController::class,'show']);
 
 Route::get('/notes',[NoteController::class,'index']);
 Route::post('/notes/{recordList}',[NoteController::class,'store']);
-Route::get('/notes/{recordList}',[NoteController::class,'show']);
+Route::get('/notes/{note}',[NoteController::class,'show']);
 
