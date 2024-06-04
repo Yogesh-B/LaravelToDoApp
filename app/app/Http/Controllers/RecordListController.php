@@ -16,7 +16,7 @@ class RecordListController extends Controller
         #TODO: try catch or handle in handler for http requests
         $perPage = $request->input('per_page', 15);
 
-        return new SuccessResponse("Record Lists fetched",new RecordListCollection(RecordList::paginate($perPage)));
+        return new SuccessResponse(new RecordListCollection(RecordList::paginate($perPage)),"Record Lists fetched");
     }
 
 
