@@ -13,6 +13,7 @@ class Note extends Model
 
     protected $fillable = [
         'list_id',
+        'title',
         'description',
         'is_completed',
     ];
