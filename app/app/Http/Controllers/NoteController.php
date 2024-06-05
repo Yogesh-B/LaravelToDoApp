@@ -14,7 +14,7 @@ class NoteController extends Controller
         public function index(Request $request){
             $perPage = $request->input('per_page', 15);
     
-            return new SuccessResponse( NoteCollection(Note::paginate($perPage)),"Notes fetched");
+            return new SuccessResponse(new NoteCollection(Note::paginate($perPage)),"Notes fetched");
         }
     
     
