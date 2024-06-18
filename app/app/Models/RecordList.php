@@ -15,4 +15,9 @@ class RecordList extends Model
     protected $fillable = [
         'list_name',
     ];
+
+
+    public function notes(){
+        return $this->hasMany(Note::class,'list_id','id');
+    }
 }

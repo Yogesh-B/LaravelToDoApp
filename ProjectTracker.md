@@ -2,8 +2,8 @@
 lists....show API✅
 
 notes....
-    .. index, show, create methods
-
+    .. index, show, create methods✅
+    ..list response with notes
 
 lists,notes...
     ..update and delete methods 

@@ -18,4 +18,8 @@ class Note extends Model
         'is_completed',
     ];
 
+    public function list(){
+        return $this->belongsTo(RecordList::class,'list_id','id');
+    }
+
 }
