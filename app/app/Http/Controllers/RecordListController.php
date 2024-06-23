@@ -21,6 +21,7 @@ class RecordListController extends Controller
 
 
     public function show(RecordList $recordList){
+        $recordList->load('notes');
         return new SuccessResponse($recordList,"RecordList retrieved");
     }
 
