@@ -34,6 +34,25 @@ class NoteController extends Controller
                 'is_completed'=>$request->input('is_completed',false),
             ]);
     
-            return new SuccessResponse(["id"=>$recordList->id],"Record List created successfully",Response::HTTP_CREATED);
+            return new SuccessResponse(["id"=>$recordList->id],"Note created successfully",Response::HTTP_CREATED);
         }
+
+
+        public function update(Request $request, Note $note){
+            $note->update([
+                'title'=>$request->input('title',""),
+                'description'=>$request->input('description'),
+                'is_completed'=>$request->input('is_completed',false),
+            ]);
+
+            return new SuccessResponse(["note"=>$note],"Note updated successfully",Response::HTTP_ACCEPTED);
+        }
+
+
+        public function destroy(Note $note){
+            $note->delete();
+
+            return new SuccessResponse(["id"=>$note->id],"Note deleted successfully",Response::HTTP_OK);
+        }
+
 }

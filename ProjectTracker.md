@@ -2,11 +2,11 @@
 lists....show API✅
 
 notes....
-    .. index, show, create methods✅
-    ..list response with notes
+    ..index, show, create methods✅
+    ..list response with notes✅
 
 lists,notes...
-    ..update and delete methods 
+    ..update and delete methods
 
 
 swagger and test cases
