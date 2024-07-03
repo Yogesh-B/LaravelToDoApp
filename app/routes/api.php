@@ -30,6 +30,8 @@ Route::get('/lists/{recordList}',[RecordListController::class,'show']);
 
 
 Route::get('/notes',[NoteController::class,'index']);
-Route::post('/notes/{recordList}',[NoteController::class,'store']);
 Route::get('/notes/{note}',[NoteController::class,'show']);
+Route::post('/notes/{recordList}',[NoteController::class,'store']);
+Route::put('/notes/{note}',[NoteController::class,'update']);
+Route::delete('/notes/{note}',[NoteController::class,'destroy']);
 
