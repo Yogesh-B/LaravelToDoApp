@@ -34,4 +34,20 @@ class RecordListController extends Controller
 
         return new SuccessResponse(["id"=>$recordList->id],"Record List created successfully",Response::HTTP_CREATED); 
     }
+
+
+    public function update(Request $request, RecordList $recordList){
+        $recordList->update([
+            'list_name'=>$request->input('list_name','')
+        ]);
+
+        return new SuccessResponse(["note"=>$recordList],"RecordList updated successfully",Response::HTTP_ACCEPTED);
+    }
+
+
+    public function destroy(RecordList $recordList){
+        $recordList->delete();
+
+        return new SuccessResponse(["id"=>$recordList->id],"RecordList deleted successfully",Response::HTTP_OK);
+    }
 }
