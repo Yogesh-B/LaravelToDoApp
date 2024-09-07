@@ -6,7 +6,7 @@ notes....
     ..list response with notes✅
 
 lists,notes...
-    ..update and delete methods
+    ..update and delete methods✅
 
 
 swagger and test cases
@@ -22,8 +22,6 @@ swagger and test cases
 
 
 
-.....
-
 
 _______
 
@@ -32,7 +30,7 @@ _______
 2. frontend Nuxt
 3. DB mysql
 4. nginx 
-5. **most important** DOCKERIZE ALL THOSE STUFF!! I WANT A SIGNLE COMMAND TO RUN ALL AT ONCE.(fast startup and graceful shutdown🤩)
+5. **Dockerrize all things**
 6. setup github actions
 7. okteto can be used to deploy the thing.
 
@@ -40,3 +38,5 @@ _______
 ## Extra stuff
 1. Make it as complex as you can! with only one purpose... learning!!! do not care about usecase!
   - like we can add chat feature, community features like sharing, followers, likes(kind of notes facebook)
+
+
