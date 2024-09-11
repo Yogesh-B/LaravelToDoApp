@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0132834783d4060681829b780dc556b",
+    "content-hash": "6c3c34a79e9dfcc5eaaca2b7c41307dc",
     "packages": [
         {
             "name": "brick/math",
@@ -6392,6 +6392,39 @@
             "time": "2022-06-03T18:03:27+00:00"
         },
         {
+            "name": "yogeshb/laraveltestpackage",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Yogesh-B/LaravelTestPackage.git",
+                "reference": "1019de2d53e81c9aec11ead9aebd0bce974eed8e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Yogesh-B/LaravelTestPackage/zipball/1019de2d53e81c9aec11ead9aebd0bce974eed8e",
+                "reference": "1019de2d53e81c9aec11ead9aebd0bce974eed8e",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yogeshb\\Laraveltestpackage\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "yogeshb",
+                    "email": "yogesh@example.com"
+                }
+            ],
+            "description": "this is a laravel test package",
+            "support": {
+                "source": "https://github.com/Yogesh-B/LaravelTestPackage/tree/main"
+            },
+            "time": "2024-09-11T12:21:18+00:00"
+        },
+        {
             "name": "zircote/swagger-php",
             "version": "4.10.6",
             "source": {
@@ -8836,7 +8869,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "yogeshb/laraveltestpackage": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
