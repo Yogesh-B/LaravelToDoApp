@@ -1,0 +1,32 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Todo App Api Docs",
+        "description": "This is official docs for the Todo App",
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "https://staging.laravel-todo.me",
+            "description": "Staging server"
+        },
+        {
+            "url": "https://laravel-todo.me",
+            "description": "Production server"
+        }
+    ],
+    "paths": {
+        "/sample-path": {
+            "get": {
+                "summary": "This is just a sample path to generate docs",
+                "operationId": "samplePath",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        }
+    }
+}
