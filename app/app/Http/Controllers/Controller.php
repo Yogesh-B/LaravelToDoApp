@@ -15,12 +15,12 @@ use Illuminate\Routing\Controller as BaseController;
  *          version="0.0.1"
  *      ),
  *      @OA\Server(
- *          description="Staging server",
- *          url="https://staging.laravel-todo.me"
+ *          description="Local server",
+ *          url="http://127.0.0.1:8000/api/"
  *      ),
  *      @OA\Server(
  *          description="Production server",
- *          url="https://laravel-todo.me"
+ *          url="https://laravel-todo.me/api/"
  *      ),
  * 
  *      @OA\Get(

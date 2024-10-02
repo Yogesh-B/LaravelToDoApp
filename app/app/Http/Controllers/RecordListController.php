@@ -12,6 +12,31 @@ use Illuminate\Http\Response;
 class RecordListController extends Controller
 {
     #TODO: add swagger docs
+    /**
+     * @OA\Get(
+     *     path="/lists",
+     *     summary="Get a list of record lists",
+     *     operationId="getRecordLists",
+     *     tags={"RecordList"},
+     *     @OA\Parameter(
+     *         name="per_page",
+     *         in="query",
+     *         required=false,
+     *         @OA\Schema(type="integer"),
+     *         description="Number of items per page"
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="List of record lists retrieved successfully",
+     *         @OA\JsonContent(ref="#/components/schemas/SuccessResponse")
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         @OA\JsonContent(ref="#/components/schemas/FailureResponse")
+     *     )
+     * )
+     */
     public function index(Request $request){
         #TODO: try catch or handle in handler for http requests
         $perPage = $request->input('per_page', 15);
@@ -20,12 +45,62 @@ class RecordListController extends Controller
     }
 
 
+
+    /**
+     * @OA\Get(
+     *     path="/record-lists/{id}",
+     *     summary="Get details of a specific record list",
+     *     operationId="getRecordList",
+     *     tags={"RecordList"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
+     *         description="ID of the record list"
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Record list retrieved successfully",
+     *         @OA\JsonContent(ref="#/components/schemas/SuccessResponse")
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Record list not found",
+     *         @OA\JsonContent(ref="#/components/schemas/FailureResponse")
+     *     )
+     * )
+     */
     public function show(RecordList $recordList){
         $recordList->load('notes');
         return new SuccessResponse($recordList,"RecordList retrieved");
     }
 
 
+    /**
+     * @OA\Post(
+     *     path="/record-lists",
+     *     summary="Create a new record list",
+     *     operationId="createRecordList",
+     *     tags={"RecordList"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="list_name", type="string", description="Name of the record list")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Record list created successfully",
+     *         @OA\JsonContent(ref="#/components/schemas/SuccessResponse")
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad request",
+     *         @OA\JsonContent(ref="#/components/schemas/FailureResponse")
+     *     )
+     * )
+     */
     public function store(Request $request){
         #REVIEW: may want to use save method, not sure about what to use
         $recordList = RecordList::create([
@@ -36,6 +111,37 @@ class RecordListController extends Controller
     }
 
 
+    /**
+     * @OA\Put(
+     *     path="/record-lists/{id}",
+     *     summary="Update a specific record list",
+     *     operationId="updateRecordList",
+     *     tags={"RecordList"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
+     *         description="ID of the record list"
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="list_name", type="string", description="Updated name of the record list")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=202,
+     *         description="Record list updated successfully",
+     *         @OA\JsonContent(ref="#/components/schemas/SuccessResponse")
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Record list not found",
+     *         @OA\JsonContent(ref="#/components/schemas/FailureResponse")
+     *     )
+     * )
+     */
     public function update(Request $request, RecordList $recordList){
         $recordList->update([
             'list_name'=>$request->input('list_name','')
@@ -45,6 +151,31 @@ class RecordListController extends Controller
     }
 
 
+    /**
+     * @OA\Delete(
+     *     path="/record-lists/{id}",
+     *     summary="Delete a specific record list",
+     *     operationId="deleteRecordList",
+     *     tags={"RecordList"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
+     *         description="ID of the record list"
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Record list deleted successfully",
+     *         @OA\JsonContent(ref="#/components/schemas/SuccessResponse")
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Record list not found",
+     *         @OA\JsonContent(ref="#/components/schemas/FailureResponse")
+     *     )
+     * )
+     */
     public function destroy(RecordList $recordList){
         $recordList->delete();
 

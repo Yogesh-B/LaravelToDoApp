@@ -10,6 +10,30 @@ use Illuminate\Http\Response;
 class FailureResponse extends JsonResource
 {
 
+    /**
+     * @OA\Schema(
+     *     schema="FailureResponse",
+     *     title="Failure Response",
+     *     description="Standard failure response structure",
+     *     @OA\Property(
+     *         property="success",
+     *         type="boolean",
+     *         description="Indicates if the request failed"
+     *     ),
+     *     @OA\Property(
+     *         property="message",
+     *         type="string",
+     *         description="Message describing the failure"
+     *     ),
+     *     @OA\Property(
+     *         property="data",
+     *         type="object",
+     *         description="Any errors or data related to the failure"
+     *     )
+     * )
+     */
+
+
     protected $message = null;
     protected $errors = null;
     protected $status = null;
