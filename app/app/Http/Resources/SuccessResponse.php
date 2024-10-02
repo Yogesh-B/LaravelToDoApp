@@ -10,6 +10,30 @@ use Illuminate\Http\Response;
 class SuccessResponse extends JsonResource
 {
 
+    /**
+     * @OA\Schema(
+     *     schema="SuccessResponse",
+     *     title="Success Response",
+     *     description="Standard success response structure",
+     *     @OA\Property(
+     *         property="success",
+     *         type="boolean",
+     *         description="Indicates if the request was successful"
+     *     ),
+     *     @OA\Property(
+     *         property="message",
+     *         type="string",
+     *         description="Message describing the outcome of the operation"
+     *     ),
+     *     @OA\Property(
+     *         property="data",
+     *         type="object",
+     *         description="The actual data returned from the request"
+     *     )
+     * )
+     */
+
+     
     protected $message = null;
     protected $data = null;
     protected $status = null;

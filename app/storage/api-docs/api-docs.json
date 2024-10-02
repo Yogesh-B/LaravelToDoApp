@@ -7,11 +7,11 @@
     },
     "servers": [
         {
-            "url": "https://staging.laravel-todo.me",
-            "description": "Staging server"
+            "url": "http://127.0.0.1:8000/api/",
+            "description": "Local server"
         },
         {
-            "url": "https://laravel-todo.me",
+            "url": "https://laravel-todo.me/api/",
             "description": "Production server"
         }
     ],
@@ -27,6 +27,311 @@
                     }
                 }
             }
+        },
+        "/lists": {
+            "get": {
+                "tags": [
+                    "RecordList"
+                ],
+                "summary": "Get a list of record lists",
+                "operationId": "getRecordLists",
+                "parameters": [
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Number of items per page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of record lists retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FailureResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/record-lists/{id}": {
+            "get": {
+                "tags": [
+                    "RecordList"
+                ],
+                "summary": "Get details of a specific record list",
+                "operationId": "getRecordList",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the record list",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Record list retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Record list not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FailureResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "RecordList"
+                ],
+                "summary": "Update a specific record list",
+                "operationId": "updateRecordList",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the record list",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "list_name": {
+                                        "description": "Updated name of the record list",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Record list updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Record list not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FailureResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "RecordList"
+                ],
+                "summary": "Delete a specific record list",
+                "operationId": "deleteRecordList",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the record list",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Record list deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Record list not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FailureResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/record-lists": {
+            "post": {
+                "tags": [
+                    "RecordList"
+                ],
+                "summary": "Create a new record list",
+                "operationId": "createRecordList",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "list_name": {
+                                        "description": "Name of the record list",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Record list created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FailureResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-    }
+    },
+    "components": {
+        "schemas": {
+            "FailureResponse": {
+                "title": "Failure Response",
+                "description": "Standard failure response structure",
+                "properties": {
+                    "success": {
+                        "description": "Indicates if the request failed",
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "description": "Message describing the failure",
+                        "type": "string"
+                    },
+                    "data": {
+                        "description": "Any errors or data related to the failure",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "SuccessResponse": {
+                "title": "Success Response",
+                "description": "Standard success response structure",
+                "properties": {
+                    "success": {
+                        "description": "Indicates if the request was successful",
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "description": "Message describing the outcome of the operation",
+                        "type": "string"
+                    },
+                    "data": {
+                        "description": "The actual data returned from the request",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "RecordList": {
+                "title": "Record List",
+                "description": "A model representing a record list",
+                "properties": {
+                    "id": {
+                        "description": "ID of the record list",
+                        "type": "integer"
+                    },
+                    "list_name": {
+                        "description": "Name of the record list",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Date and time when the record list was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Date and time when the record list was last updated",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted_at": {
+                        "description": "Date and time when the record list was deleted (for soft deletes)",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "RecordList",
+            "description": "RecordList"
+        }
+    ]
 }
