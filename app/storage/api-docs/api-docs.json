@@ -68,9 +68,54 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "RecordList"
+                ],
+                "summary": "Create a new record list",
+                "operationId": "createRecordList",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "list_name": {
+                                        "description": "Name of the record list",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Record list created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FailureResponse"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
-        "/record-lists/{id}": {
+        "/lists/{id}": {
             "get": {
                 "tags": [
                     "RecordList"
@@ -207,53 +252,6 @@
                     }
                 }
             }
-        },
-        "/record-lists": {
-            "post": {
-                "tags": [
-                    "RecordList"
-                ],
-                "summary": "Create a new record list",
-                "operationId": "createRecordList",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "list_name": {
-                                        "description": "Name of the record list",
-                                        "type": "string"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Record list created successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/SuccessResponse"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/FailureResponse"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
     },
     "components": {
@@ -264,11 +262,14 @@
                 "properties": {
                     "success": {
                         "description": "Indicates if the request failed",
-                        "type": "boolean"
+                        "type": "boolean",
+                        "default": false,
+                        "example": false
                     },
                     "message": {
                         "description": "Message describing the failure",
-                        "type": "string"
+                        "type": "string",
+                        "example": "Operation failed"
                     },
                     "data": {
                         "description": "Any errors or data related to the failure",
@@ -283,11 +284,14 @@
                 "properties": {
                     "success": {
                         "description": "Indicates if the request was successful",
-                        "type": "boolean"
+                        "type": "boolean",
+                        "default": true,
+                        "example": true
                     },
                     "message": {
                         "description": "Message describing the outcome of the operation",
-                        "type": "string"
+                        "type": "string",
+                        "example": "Operation successful"
                     },
                     "data": {
                         "description": "The actual data returned from the request",
