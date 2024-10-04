@@ -18,12 +18,15 @@ class FailureResponse extends JsonResource
      *     @OA\Property(
      *         property="success",
      *         type="boolean",
-     *         description="Indicates if the request failed"
+     *         description="Indicates if the request failed",
+     *         example=false,
+     *         default=false
      *     ),
      *     @OA\Property(
      *         property="message",
      *         type="string",
-     *         description="Message describing the failure"
+     *         description="Message describing the failure",
+     *         example="Operation failed"
      *     ),
      *     @OA\Property(
      *         property="data",

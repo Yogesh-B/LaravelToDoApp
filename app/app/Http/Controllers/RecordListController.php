@@ -48,7 +48,7 @@ class RecordListController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/record-lists/{id}",
+     *     path="/lists/{id}",
      *     summary="Get details of a specific record list",
      *     operationId="getRecordList",
      *     tags={"RecordList"},
@@ -79,7 +79,7 @@ class RecordListController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/record-lists",
+     *     path="/lists",
      *     summary="Create a new record list",
      *     operationId="createRecordList",
      *     tags={"RecordList"},
@@ -113,7 +113,7 @@ class RecordListController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/record-lists/{id}",
+     *     path="/lists/{id}",
      *     summary="Update a specific record list",
      *     operationId="updateRecordList",
      *     tags={"RecordList"},
@@ -153,7 +153,7 @@ class RecordListController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/record-lists/{id}",
+     *     path="/lists/{id}",
      *     summary="Delete a specific record list",
      *     operationId="deleteRecordList",
      *     tags={"RecordList"},

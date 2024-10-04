@@ -18,12 +18,15 @@ class SuccessResponse extends JsonResource
      *     @OA\Property(
      *         property="success",
      *         type="boolean",
-     *         description="Indicates if the request was successful"
+     *         description="Indicates if the request was successful",
+     *         example=true,
+     *         default=true
      *     ),
      *     @OA\Property(
      *         property="message",
      *         type="string",
-     *         description="Message describing the outcome of the operation"
+     *         description="Message describing the outcome of the operation",
+     *         example="Operation successful"
      *     ),
      *     @OA\Property(
      *         property="data",
