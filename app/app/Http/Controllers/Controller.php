@@ -22,17 +22,6 @@ use Illuminate\Routing\Controller as BaseController;
  *          description="Production server",
  *          url="https://laravel-todo.me/api/"
  *      ),
- * 
- *      @OA\Get(
- *          path="/sample-path",
- *          summary="This is just a sample path to generate docs",
- *          operationId="samplePath",
- *          parameters={},
- *          @OA\Response(
- *              response=200,
- *              description="successful operation",
- *          ),
- *      ),
  * )
  */
 
