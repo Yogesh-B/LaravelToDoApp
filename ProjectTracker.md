@@ -31,18 +31,18 @@ notes..get,post,put,delete //positive,negative
 
 _______
 
+
 ## points for practice
 1. backend Laravel with Auth
 2. frontend Nuxt
 3. DB mysql
 4. nginx 
-5. **Dockerrize all things**
+5. **most important** DOCKERIZE ALL . SIGNLE COMMAND .
 6. setup github actions
 7. okteto can be used to deploy the thing.
 
 
-## Extra stuff
-1. Make it as complex as you can! with only one purpose... learning!!! do not care about usecase!
-  - like we can add chat feature, community features like sharing, followers, likes(kind of notes facebook)
+## Feature list
+- [] user can share notes with public link or user specific view/edit access(e.g. google docs like sharing feature)
 
 
