@@ -14,3 +14,4 @@ Just revising Laravel and Nuxt skills, and also learning docker.
 
 ## Feature list
 - [] user can share notes with public link or user specific view/edit access(e.g. google docs like sharing feature)
+- [] facebook/linkedin/youtube like follow/subscribe feature to view someone's publically posted notes, {features like,share,subscribe/connect,comment} features 
