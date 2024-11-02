@@ -10,9 +10,11 @@ lists,notes...
 
 
 swagger and test cases
-__swagger...
-lists..get,post,put,delete
-notes..get,post,put,delete
+__swagger...✅
+lists..get,post,put,delete✅
+notes..get,post,put,delete✅
+//add authentication
+    -  and update swagger
 __tests...
 lists..get,post,put,delete //positive,negative
 notes..get,post,put,delete //positive,negative
