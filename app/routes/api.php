@@ -25,27 +25,37 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 #TODO: add authenticaation
 #TODO: separate api directory for api controllers
 
-Route::get('/lists',[RecordListController::class,'index']);
-Route::post('/lists',[RecordListController::class,'store']);
-Route::get('/lists/{recordList}',[RecordListController::class,'show']);
-Route::put('/lists/{recordList}',[RecordListController::class,'update']);
-Route::delete('/lists/{recordList}',[RecordListController::class,'destroy']);
 
 
-Route::get('/notes',[NoteController::class,'index']);
-Route::get('/notes/{note}',[NoteController::class,'show']);
-Route::post('/notes/{recordList}',[NoteController::class,'store']);
-Route::put('/notes/{note}',[NoteController::class,'update']);
-Route::delete('/notes/{note}',[NoteController::class,'destroy']);
 
 
-Route::group([
-    'middleware' => 'api',
-    'prefix' => 'auth'
-], function($router) {
-    Route::post('/login',[AuthController::class,'login']);
-    Route::post('/register',[AuthController::class,'register']);
+Route::group(['middleware'=>['auth']],function($router){
+
+    //authentication routes
+    Route::post('/login',[AuthController::class,'login'])->withoutMiddleware(['auth']);
+    Route::post('/register',[AuthController::class,'register'])->withoutMiddleware(['auth']);
     Route::post('/logout',[AuthController::class,'logout']);
     Route::post('/refresh',[AuthController::class,'refresh']);
-    Route::post('/me',[AuthController::class,'me']);
+    Route::post('/profile',[AuthController::class,'profile']);
+
+
+
+
+    
+    //feature routes
+    Route::get('/lists',[RecordListController::class,'index']);
+    Route::post('/lists',[RecordListController::class,'store']);
+    Route::get('/lists/{recordList}',[RecordListController::class,'show']);
+    Route::put('/lists/{recordList}',[RecordListController::class,'update']);
+    Route::delete('/lists/{recordList}',[RecordListController::class,'destroy']);
+    
+    
+    Route::get('/notes',[NoteController::class,'index']);
+    Route::get('/notes/{note}',[NoteController::class,'show']);
+    Route::post('/notes/{recordList}',[NoteController::class,'store']);
+    Route::put('/notes/{note}',[NoteController::class,'update']);
+    Route::delete('/notes/{note}',[NoteController::class,'destroy']);
+
+
 });
+

@@ -1,0 +1,598 @@
+{
+	"info": {
+		"_postman_id": "2eca5f59-f538-4853-852a-ecc712097dcf",
+		"name": "LaravelTodoApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35332243"
+	},
+	"item": [
+		{
+			"name": "Create List",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"list_name\":\"test1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/lists",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update List",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"list_name\":\"test45\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/lists/5",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lists",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Index Lists",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/lists?per_page=5&page=1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "per_page",
+							"value": "5"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show List",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/lists/5",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lists",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete List",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/lists/5",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"lists",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Note",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"8/6/24\",\n    \"description\":\"Bhindo, Tameta\",\n    \"is_completed\":false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/notes/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"notes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Note",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"6/6/24\",\n    \"description\":\"Tameta 1kg, Bateta 2kg\",\n    \"is_completed\":false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/notes/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"notes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Index Notes",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/notes?per_page=5&page=1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"notes"
+					],
+					"query": [
+						{
+							"key": "per_page",
+							"value": "5"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Note",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/notes/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"notes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Note",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/notes/3",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"notes",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"test1\",\n    \"email\":\"test1@test.com\",\n    \"password\":\"123456\",\n    \"password_confirmation\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/register",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Capture the token from the response and save it in an environment variable",
+							"const response = pm.response.json();",
+							"const token = response.token || response.access_token; // Adjust based on your API response structure",
+							"",
+							"if (token) {",
+							"    pm.environment.set(\"bearerToken\", token);",
+							"} else {",
+							"    console.error(\"Token not found in response\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"test1@test.com\",\n    \"password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/login",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
