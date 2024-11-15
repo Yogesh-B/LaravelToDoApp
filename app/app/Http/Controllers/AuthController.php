@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\FailureResponse;
+use App\Http\Resources\SuccessResponse;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -19,18 +22,14 @@ class AuthController extends Controller
         $user = Auth::user();
 
         if(!$user){
-            //TODO: update failure response with proper status code
-            dd("user does not exists");
+            return new FailureResponse(
+                ["incorrect email or password"],
+                "Invalid credentials", 
+                Response::HTTP_UNAUTHORIZED
+            );
         }
-        //TODO: update response with status code
-        return response()->json([
-            'message'=>'logged in',
-            'access_token'=>$token,
-            'token_type'=>'bearer',
-            // 'expires_in'=>auth()->factory()->getTTL()*60, //TODO: make it live longer, atleast half of daylight
-        ],200);
-        dd($token);
 
+        return $this->responseWithToken($token,'Login successful');
     }
     
 
@@ -43,15 +42,24 @@ class AuthController extends Controller
 
         $user = User::create($validated);
 
-        //TODO: update the response
         return response()->json([
             'message'=>'User created successfully',
             'user'=>$user
         ],201);
     }
     
-    public function responseWithToken($token){
-        //TODO: same response for login and refresh
+    public function responseWithToken($token,$message){
+        //NOTE: not used response resource because 
+        //wanted to show authorization variables directly 
+        //in response
+        //UPGRADABLE
+        return response()->json([
+            'success' => true,
+            'message'=>$message,
+            'access_token'=>$token,
+            'token_type'=>'bearer',
+            'expires_in'=>auth()->factory()->getTTL()*60,
+        ],200);
     }
 
 }

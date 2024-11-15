@@ -38,9 +38,8 @@ Route::group(['middleware'=>['auth']],function($router){
     Route::post('/refresh',[AuthController::class,'refresh']);
     Route::post('/profile',[AuthController::class,'profile']);
 
-
-
-
+    
+    
     
     //feature routes
     Route::get('/lists',[RecordListController::class,'index']);
@@ -55,7 +54,5 @@ Route::group(['middleware'=>['auth']],function($router){
     Route::post('/notes/{recordList}',[NoteController::class,'store']);
     Route::put('/notes/{note}',[NoteController::class,'update']);
     Route::delete('/notes/{note}',[NoteController::class,'destroy']);
-
-
 });
 
