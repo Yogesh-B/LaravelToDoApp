@@ -36,18 +36,30 @@ class AuthController extends Controller
     public function register(Request $request){
         $validated = $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users|email',
             'password' => 'required|confirmed|min:6',
         ]);
 
         $user = User::create($validated);
 
-        return response()->json([
-            'message'=>'User created successfully',
-            'user'=>$user
-        ],201);
+        $token = Auth::login($user);
+
+        return $this->responseWithToken($token,'Registration successful'); 
     }
     
+
+    public function logout(){
+        Auth::logout();
+        return new SuccessResponse(null,'Logout successful',Response::HTTP_OK);
+    }
+
+
+    public function refresh(){
+        //TODO: complete the AuthController as soon as possible
+    }
+
+
+
     public function responseWithToken($token,$message){
         //NOTE: not used response resource because 
         //wanted to show authorization variables directly 
