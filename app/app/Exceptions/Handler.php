@@ -9,9 +9,12 @@ use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 use PHPUnit\Framework\TestStatus\Failure;
 use Throwable;
-
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 
 
@@ -42,28 +45,37 @@ class Handler extends ExceptionHandler
     //render the exception to json response
     public function render($request, Throwable $e)
     {
+        //JWT exceptions were not being captured separately while
+        //using jwtauth as "guard", but using it as middleware
+        //JWT exceptions captured separately
+        //RECOMMENDED: use guard with custom exceptions
         if ($e instanceof AuthenticationException) {
-            return new FailureResponse($e->getMessage(), 'Please login to continue', Response::HTTP_UNAUTHORIZED);
+            return new FailureResponse([$e->getMessage()], 'Please login to continue', Response::HTTP_UNAUTHORIZED);
         }
         elseif($e instanceof UniqueConstraintViolationException){
             $pattern = "/Duplicate entry '([^']+)' for key '([^']+)'/";
             $matches = [];
             $count = preg_match($pattern, $e->getMessage(), $matches);
-            if(count($matches)==3 && $matches[2]=='users.users_email_unique'){
-                return new FailureResponse(
-                    [
-                        "User with email '".$matches[1]."' already exists",
-                    ],
-                    "Email already exists",
-                    Response::HTTP_CONFLICT
-                );
-            }
             //OPTIONAL: update if needed
             return new FailureResponse($matches[0], 'Duplicate entry error', Response::HTTP_INTERNAL_SERVER_ERROR);
         }
+        elseif($e instanceof ValidationException){
+            return new FailureResponse($e->errors(), 'Validation error', Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+        //tokenexpiredexception
+        elseif ($e instanceof TokenExpiredException) {
+            return new FailureResponse([$e->getMessage()], 'Authentication error', Response::HTTP_UNAUTHORIZED);
+        }
+        //tokeninvalidexception
+        elseif ($e instanceof TokenInvalidException) {
+            return new FailureResponse([$e->getMessage()], 'Authentication error', Response::HTTP_UNAUTHORIZED);
+        }
+        elseif ($e instanceof JWTException) {
+            return new FailureResponse([$e->getMessage()], 'Authentication error', Response::HTTP_UNAUTHORIZED);
+        }
         else
         {
-            return new FailureResponse($e->getMessage(), 'Internal server error', Response::HTTP_INTERNAL_SERVER_ERROR);
+            return new FailureResponse([$e->getMessage()], 'Internal server error', Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
