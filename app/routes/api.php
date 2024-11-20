@@ -29,30 +29,38 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
-Route::group(['middleware'=>['auth']],function($router){
+// Route::group(['middleware'=>['auth']],function($router){
+Route::group(['middleware'=>['auth.jwt']],function($router){
 
     //authentication routes
-    Route::post('/login',[AuthController::class,'login'])->withoutMiddleware(['auth']);
-    Route::post('/register',[AuthController::class,'register'])->withoutMiddleware(['auth']);
-    Route::post('/logout',[AuthController::class,'logout']);
-    Route::post('/refresh',[AuthController::class,'refresh']);
-    Route::post('/profile',[AuthController::class,'profile']);
+    Route::controller(AuthController::class)->group(function () {
+        Route::post('/login','login')->withoutMiddleware(['auth']);
+        Route::post('/register','register')->withoutMiddleware(['auth']);
+        Route::post('/logout','logout');
+        Route::post('/refresh','refresh');
+        Route::post('/profile','profile');
+        
+    });
 
-    
+
     
     
     //feature routes
-    Route::get('/lists',[RecordListController::class,'index']);
-    Route::post('/lists',[RecordListController::class,'store']);
-    Route::get('/lists/{recordList}',[RecordListController::class,'show']);
-    Route::put('/lists/{recordList}',[RecordListController::class,'update']);
-    Route::delete('/lists/{recordList}',[RecordListController::class,'destroy']);
+    Route::controller(RecordListController::class)->group(function () {
+        Route::get('/lists','index');
+        Route::post('/lists','store');
+        Route::get('/lists/{recordList}','show');
+        Route::put('/lists/{recordList}','update');
+        Route::delete('/lists/{recordList}','destroy');
+    });
     
-    
-    Route::get('/notes',[NoteController::class,'index']);
-    Route::get('/notes/{note}',[NoteController::class,'show']);
-    Route::post('/notes/{recordList}',[NoteController::class,'store']);
-    Route::put('/notes/{note}',[NoteController::class,'update']);
-    Route::delete('/notes/{note}',[NoteController::class,'destroy']);
+    Route::controller(NoteController::class)->group(function () {
+        Route::get('/notes','index');
+        Route::get('/notes/{note}','show');
+        Route::post('/notes/{recordList}','store');
+        Route::put('/notes/{note}','update');
+        Route::delete('/notes/{note}','destroy');
+    });
+
 });
 
