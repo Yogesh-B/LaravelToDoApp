@@ -29,7 +29,7 @@ class FailureResponse extends JsonResource
      *         example="Operation failed"
      *     ),
      *     @OA\Property(
-     *         property="data",
+     *         property="errors",
      *         type="object",
      *         description="Any errors or data related to the failure"
      *     )
@@ -46,6 +46,8 @@ class FailureResponse extends JsonResource
         $this->errors = $errors;
         $this->message = $message;
         $this->status = $status;
+
+        static::withoutWrapping();
     }
 
 
@@ -59,7 +61,7 @@ class FailureResponse extends JsonResource
         return [
             "success" => false,
             "message" => $this->message,
-            "data" => $this->errors,
+            "errors" => $this->errors,
         ];
         
     }

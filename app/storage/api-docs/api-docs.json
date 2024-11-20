@@ -529,7 +529,7 @@
                         "type": "string",
                         "example": "Operation failed"
                     },
-                    "data": {
+                    "errors": {
                         "description": "Any errors or data related to the failure",
                         "type": "object"
                     }
