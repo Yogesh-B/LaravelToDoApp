@@ -38,7 +38,7 @@ class FailureResponse extends JsonResource
 
 
     protected $message = null;
-    protected $errors = null;
+    protected array $errors = [];
     protected $status = null;
     
 
