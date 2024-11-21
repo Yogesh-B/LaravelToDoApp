@@ -55,10 +55,13 @@ class AuthController extends Controller
 
 
     public function refresh(){
-        //TODO: complete the AuthController as soon as possible
+        return $this->responseWithToken(Auth::refresh(),'Refresh successful');
     }
 
-
+    public function profile(){
+        $user = Auth::user();
+        return new SuccessResponse($user,'Profile fetched successfully',Response::HTTP_OK);
+    }
 
     public function responseWithToken($token,$message){
         //NOTE: not used response resource because 

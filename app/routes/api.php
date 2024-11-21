@@ -34,12 +34,11 @@ Route::group(['middleware'=>['auth.jwt']],function($router){
 
     //authentication routes
     Route::controller(AuthController::class)->group(function () {
-        Route::post('/login','login')->withoutMiddleware(['auth']);
-        Route::post('/register','register')->withoutMiddleware(['auth']);
+        Route::post('/login','login')->withoutMiddleware(['auth.jwt']);
+        Route::post('/register','register')->withoutMiddleware(['auth.jwt']);
         Route::post('/logout','logout');
-        Route::post('/refresh','refresh');
-        Route::post('/profile','profile');
-        
+        Route::post('/refresh_token','refresh')->withoutMiddleware(['auth.jwt']);
+        Route::get('/profile','profile');
     });
 
 
