@@ -558,12 +558,62 @@
                 },
                 "type": "object"
             },
+            "Note": {
+                "title": "Notes",
+                "description": "A model representing a note",
+                "properties": {
+                    "id": {
+                        "description": "ID of the note",
+                        "type": "integer"
+                    },
+                    "owner_id": {
+                        "description": "ID of the user who owns the note",
+                        "type": "integer"
+                    },
+                    "list_id": {
+                        "description": "Id of the record list that the note belongs to",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "Title of the note",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description of the note",
+                        "type": "text"
+                    },
+                    "is_completed": {
+                        "description": "completion status for notes, true or false",
+                        "type": "boolean"
+                    },
+                    "created_at": {
+                        "description": "Date and time when the record list was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Date and time when the record list was last updated",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted_at": {
+                        "description": "Date and time when the record list was deleted (for soft deletes)",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
             "RecordList": {
                 "title": "Record List",
                 "description": "A model representing a record list",
                 "properties": {
                     "id": {
                         "description": "ID of the record list",
+                        "type": "integer"
+                    },
+                    "owner_id": {
+                        "description": "ID of the user who owns the record list",
                         "type": "integer"
                     },
                     "list_name": {

@@ -11,7 +11,63 @@ class Note extends Model
     use HasFactory;
     use SoftDeletes;
 
+    /**
+     * @OA\Schema(
+     *      schema="Note",
+     *      title="Notes",
+     *      description="A model representing a note",
+     *      @OA\Property(
+     *          property="id",
+     *          type="integer",
+     *          description="ID of the note"
+     *      ),
+     *      @OA\Property(
+     *          property="owner_id",
+     *          type="integer",
+     *          description="ID of the user who owns the note"
+     *      ),
+     *      @OA\Property(
+     *          property="list_id",
+     *          type="integer",
+     *          description="Id of the record list that the note belongs to"
+     *      ),
+     *      @OA\Property(
+     *          property="title",
+     *          type="string",
+     *          description="Title of the note"
+     *      ),
+     *      @OA\Property(
+     *          property="description",
+     *          type="text",
+     *          description="Description of the note"
+     *      ),
+     *      @OA\Property(
+     *          property="is_completed",
+     *          type="boolean",
+     *          description="completion status for notes, true or false"
+     *      ),
+     *      @OA\Property(
+     *          property="created_at",
+     *          type="string",
+     *          format="date-time",
+     *          description="Date and time when the record list was created"
+     *      ),
+     *      @OA\Property(
+     *          property="updated_at",
+     *          type="string",
+     *          format="date-time",
+     *          description="Date and time when the record list was last updated"
+     *      ),
+     *      @OA\Property(
+     *          property="deleted_at",
+     *          type="string",
+     *          format="date-time",
+     *          description="Date and time when the record list was deleted (for soft deletes)"
+     *      )
+     *) 
+     */
     protected $fillable = [
+        'owner_id',
         'list_id',
         'title',
         'description',

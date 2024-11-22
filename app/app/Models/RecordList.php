@@ -22,6 +22,11 @@ class RecordList extends Model
      *         description="ID of the record list"
      *     ),
      *     @OA\Property(
+     *         property="owner_id",
+     *         type="integer",
+     *         description="ID of the user who owns the record list"
+     *     ),
+     *     @OA\Property(
      *         property="list_name",
      *         type="string",
      *         description="Name of the record list"
@@ -47,10 +52,11 @@ class RecordList extends Model
      * )
     */
 
-    
+
 
     #REVIEW: we could used some 'key' here, which we use in route for retrieving a row
     protected $fillable = [
+        'owner_id',
         'list_name',
     ];
 

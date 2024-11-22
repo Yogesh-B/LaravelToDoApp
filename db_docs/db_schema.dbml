@@ -1,18 +1,54 @@
-table record_lists {
-  id serial [pk]
-  list_name varchar(100)
-  created_at timestamp
-  updated_at timestamp
-  deleted_at timestamp
+Table record_lists {
+  id          serial [pk]
+  owner_id  integer [not null, ref: > users.id]
+  list_name   varchar(100)
+  created_at  timestamp
+  updated_at  timestamp
+  deleted_at  timestamp
 }
 
-table notes {
-  id serial [pk]
-  list_id integer [ref: > record_lists.id]
-  description varchar(500)
+Table notes {
+  id          serial [pk]
+  list_id     integer [not null, ref: > record_lists.id]
+  owner_id  integer [not null, ref: > users.id]
+  description text
   is_completed boolean
-  created_at timestamp
-  updated_at timestamp
-  deleted_at timestamp
+  created_at  timestamp
+  updated_at  timestamp
+  deleted_at  timestamp
+}
+
+Table users {
+  id       serial [pk]
+  name     varchar(100)
+  email    varchar(100) [unique, not null]
+  password varchar(100) [not null]
+  created_at  timestamp
+  updated_at  timestamp
+  deleted_at  timestamp
+}
+
+Table acls {
+  id          serial [pk]
+  user_id     integer [not null, ref: > users.id, on delete: cascade]
+  entity_type varchar(50) [not null]
+  entity_id   integer [not null]
+  permission  varchar(10) [not null]
+  created_at  timestamp
+  updated_at  timestamp
+  deleted_at  timestamp
+}
+
+// Index acl_unique on acl (user_id, entity_type, entity_id) [unique]*/
+
+Enum entity_type {
+  list
+  note
+}
+
+Enum permission {
+  view
+  edit
+  owner
 }
 
