@@ -8,7 +8,7 @@ CREATE TABLE "record_lists" (
 
 CREATE TABLE "notes" (
   "id" serial PRIMARY KEY,
-  "list_id" integer FOREIGN KEY ("list_id") REFERENCES "record_lists" ("id"),
+  "record_list_id" integer FOREIGN KEY ("record_list_id") REFERENCES "record_lists" ("id"),
   "description" varchar(500),
   "is_completed" boolean,
   "created_at" timestamp,

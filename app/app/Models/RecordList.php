@@ -62,6 +62,6 @@ class RecordList extends Model
 
 
     public function notes(){
-        return $this->hasMany(Note::class,'list_id','id');
+        return $this->hasMany(Note::class,'record_list_id','id');
     }
 }

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id('id')->autoIncrement();
-            $table->unsignedBigInteger('list_id');
-            $table->foreign('list_id')->references('id')->on('record_lists');
+            $table->unsignedBigInteger('record_list_id');
+            $table->foreign('record_list_id')->references('id')->on('record_lists');
             $table->text('description');
             $table->timestamps();
             $table->softDeletes();

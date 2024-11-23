@@ -27,7 +27,7 @@ class Note extends Model
      *          description="ID of the user who owns the note"
      *      ),
      *      @OA\Property(
-     *          property="list_id",
+     *          property="record_list_id",
      *          type="integer",
      *          description="Id of the record list that the note belongs to"
      *      ),
@@ -68,14 +68,14 @@ class Note extends Model
      */
     protected $fillable = [
         'owner_id',
-        'list_id',
+        'record_list_id',
         'title',
         'description',
         'is_completed',
     ];
 
     public function list(){
-        return $this->belongsTo(RecordList::class,'list_id','id');
+        return $this->belongsTo(RecordList::class,'record_list_id','id');
     }
 
 }

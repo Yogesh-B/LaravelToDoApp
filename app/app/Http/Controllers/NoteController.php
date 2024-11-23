@@ -110,7 +110,7 @@ class NoteController extends Controller
         $listId = $recordList->id;
 
         $recordList = Note::create([
-            'list_id'=> $listId,
+            'record_list_id'=> $listId,
             'title'=>$request->input('title',""),
             'description'=>$request->input('description'),
             'is_completed'=>$request->input('is_completed',false),

@@ -570,7 +570,7 @@
                         "description": "ID of the user who owns the note",
                         "type": "integer"
                     },
-                    "list_id": {
+                    "record_list_id": {
                         "description": "Id of the record list that the note belongs to",
                         "type": "integer"
                     },

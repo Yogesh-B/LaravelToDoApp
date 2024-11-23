@@ -9,7 +9,7 @@ Table record_lists {
 
 Table notes {
   id          serial [pk]
-  list_id     integer [not null, ref: > record_lists.id]
+  record_list_id     integer [not null, ref: > record_lists.id]
   owner_id  integer [not null, ref: > users.id]
   description text
   is_completed boolean
