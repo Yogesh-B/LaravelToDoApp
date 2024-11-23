@@ -74,7 +74,7 @@ class NoteController extends Controller
     
     /**
      * @OA\Post(
-     *     path="/lists/{record_list_id}/notes",
+     *     path="/record_lists/{record_list_id}/notes",
      *     summary="Create a new note",
      *     description="Creates a new note under a specific record list.",
      *     tags={"Notes"},

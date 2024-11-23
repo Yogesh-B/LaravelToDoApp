@@ -40,7 +40,7 @@
 					}
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/lists",
+					"raw": "127.0.0.1:8000/api/record_lists",
 					"host": [
 						"127",
 						"0",
@@ -90,7 +90,7 @@
 					}
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/lists/5",
+					"raw": "127.0.0.1:8000/api/record_lists/5",
 					"host": [
 						"127",
 						"0",
@@ -132,7 +132,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "127.0.0.1:8000/api/lists?per_page=5&page=1",
+					"raw": "127.0.0.1:8000/api/record_lists?per_page=5&page=1",
 					"host": [
 						"127",
 						"0",
@@ -183,7 +183,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "127.0.0.1:8000/api/lists/5",
+					"raw": "127.0.0.1:8000/api/record_lists/5",
 					"host": [
 						"127",
 						"0",
@@ -225,7 +225,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "127.0.0.1:8000/api/lists/5",
+					"raw": "127.0.0.1:8000/api/record_lists/5",
 					"host": [
 						"127",
 						"0",

@@ -219,7 +219,7 @@
                 }
             }
         },
-        "/lists/{record_list_id}/notes": {
+        "/record_lists/{record_list_id}/notes": {
             "post": {
                 "tags": [
                     "Notes"
@@ -286,7 +286,7 @@
                 }
             }
         },
-        "/lists": {
+        "/record_lists": {
             "get": {
                 "tags": [
                     "RecordList"
@@ -373,7 +373,7 @@
                 }
             }
         },
-        "/lists/{id}": {
+        "/record_lists/{id}": {
             "get": {
                 "tags": [
                     "RecordList"

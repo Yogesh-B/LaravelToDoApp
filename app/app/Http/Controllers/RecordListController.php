@@ -14,7 +14,7 @@ class RecordListController extends Controller
     #TODO: add swagger docs
     /**
      * @OA\Get(
-     *     path="/lists",
+     *     path="/record_lists",
      *     summary="Get a list of record lists",
      *     operationId="getRecordLists",
      *     tags={"RecordList"},
@@ -48,7 +48,7 @@ class RecordListController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/lists/{id}",
+     *     path="/record_lists/{id}",
      *     summary="Get details of a specific record list",
      *     operationId="getRecordList",
      *     tags={"RecordList"},
@@ -79,7 +79,7 @@ class RecordListController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/lists",
+     *     path="/record_lists",
      *     summary="Create a new record list",
      *     operationId="createRecordList",
      *     tags={"RecordList"},
@@ -113,7 +113,7 @@ class RecordListController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/lists/{id}",
+     *     path="/record_lists/{id}",
      *     summary="Update a specific record list",
      *     operationId="updateRecordList",
      *     tags={"RecordList"},
@@ -153,7 +153,7 @@ class RecordListController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/lists/{id}",
+     *     path="/record_lists/{id}",
      *     summary="Delete a specific record list",
      *     operationId="deleteRecordList",
      *     tags={"RecordList"},

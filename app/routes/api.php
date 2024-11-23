@@ -46,11 +46,11 @@ Route::group(['middleware'=>['auth.jwt']],function($router){
     
     //feature routes
     Route::controller(RecordListController::class)->group(function () {
-        Route::get('/lists','index');
-        Route::post('/lists','store');
-        Route::get('/lists/{recordList}','show');
-        Route::put('/lists/{recordList}','update');
-        Route::delete('/lists/{recordList}','destroy');
+        Route::get('/record_lists','index');
+        Route::post('/record_lists','store');
+        Route::get('/record_lists/{recordList}','show');
+        Route::put('/record_lists/{recordList}','update');
+        Route::delete('/record_lists/{recordList}','destroy');
     });
     
     Route::controller(NoteController::class)->group(function () {
