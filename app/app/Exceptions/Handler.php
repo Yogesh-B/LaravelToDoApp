@@ -45,6 +45,7 @@ class Handler extends ExceptionHandler
     //render the exception to json response
     public function render($request, Throwable $e)
     {
+        // dd($e);
         //JWT exceptions were not being captured separately while
         //using jwtauth as "guard", but using it as middleware
         //JWT exceptions captured separately
