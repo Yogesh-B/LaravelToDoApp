@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('entity_id');//we need to manage the referentail integrity in application, may be observers
             $table->enum('permission',['viewer','editor','owner']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('acl');
+        Schema::dropIfExists('acls');
     }
 };

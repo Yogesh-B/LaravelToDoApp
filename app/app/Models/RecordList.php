@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RecordList extends Model
@@ -64,4 +65,14 @@ class RecordList extends Model
     public function notes(){
         return $this->hasMany(Note::class,'record_list_id','id');
     }
+
+    public function user(){
+        return $this->belongsTo(User::class,'owner_id','id');
+    }
+
+    public function acls(): MorphMany
+    {
+        return $this->morphMany(Acl::class, 'acl');
+    }
+
 }
