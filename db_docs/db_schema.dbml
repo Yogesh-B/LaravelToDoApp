@@ -31,9 +31,9 @@ Table users {
 Table acls {
   id          serial [pk]
   user_id     integer [not null, ref: > users.id, on delete: cascade]
-  entity_type varchar(50) [not null]
+  entity_type entity_type [not null]
   entity_id   integer [not null]
-  permission  varchar(10) [not null]
+  permission  permission [not null]
   created_at  timestamp
   updated_at  timestamp
   deleted_at  timestamp

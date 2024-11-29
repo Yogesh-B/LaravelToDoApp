@@ -14,6 +14,11 @@ __swagger...✅
 lists..get,post,put,delete✅
 notes..get,post,put,delete✅
 //add authentication
+    - create a eloquent query for index separately in both controllers
+    - policy to be applied in controller
+      
+
+
     -  and update swagger
 __tests...
 lists..get,post,put,delete //positive,negative
