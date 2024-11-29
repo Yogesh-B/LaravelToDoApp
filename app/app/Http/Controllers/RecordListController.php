@@ -8,6 +8,8 @@ use App\Http\Resources\SuccessResponse;
 use App\Models\RecordList;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class RecordListController extends Controller
 {
@@ -103,7 +105,10 @@ class RecordListController extends Controller
      */
     public function store(Request $request){
         #REVIEW: may want to use save method, not sure about what to use
+        $user = Auth::user();
+        Log::info("RecordListController::store",[$user]);
         $recordList = RecordList::create([
+            'owner_id' => $user->id,
             'list_name' => $request->list_name,
         ]);
 
