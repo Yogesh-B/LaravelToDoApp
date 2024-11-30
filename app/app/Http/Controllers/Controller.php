@@ -34,8 +34,4 @@ class Controller extends BaseController
 
     protected $user = null;
 
-    public function __construct()
-    {
-        $this->user = Auth::user();
-    }       
 }

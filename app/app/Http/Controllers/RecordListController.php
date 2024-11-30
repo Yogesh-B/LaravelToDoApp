@@ -40,8 +40,8 @@ class RecordListController extends Controller
         #TODO: try catch or handle in handler for http requests
         $perPage = $request->input('per_page', 15);
 
-        $lists = RecordList::whereHas('acls', function ($query) {
-            $query->where('user_id', $this->user->id);
+        $lists = RecordList::whereHas('acls', function ($query) use($request){
+            $query->where('user_id', $request->user()->id);
         })->paginate($perPage);
 
         return new SuccessResponse(new RecordListCollection($lists),"Record Lists fetched");
@@ -108,7 +108,7 @@ class RecordListController extends Controller
     public function store(Request $request){
         #REVIEW: may want to use save method, not sure about what to use
         $recordList = RecordList::create([
-            'owner_id' => $this->user->id,
+            'owner_id' => $request->user()->id,
             'list_name' => $request->list_name,
         ]);
 

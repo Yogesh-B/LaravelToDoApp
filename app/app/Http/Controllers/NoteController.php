@@ -39,8 +39,8 @@ class NoteController extends Controller
     public function index(Request $request){
         $perPage = $request->input('per_page',15);
 
-        $notes = Note::whereHas('acls', function ($query) {
-            $query->where('user_id', $this->user->id);
+        $notes = Note::whereHas('acls', function ($query) use($request){
+            $query->where('user_id', $request->user()->id);
         })->paginate($perPage);
         return new SuccessResponse(new NoteCollection($notes),"Notes fetched");
     }
@@ -114,7 +114,7 @@ class NoteController extends Controller
         $listId = $recordList->id;
 
         $recordList = Note::create([
-            'owner_id' => $this->user->id,
+            'owner_id' => $request->user()->id,
             'record_list_id'=> $listId,
             'title'=>$request->input('title',""),
             'description'=>$request->input('description'),
