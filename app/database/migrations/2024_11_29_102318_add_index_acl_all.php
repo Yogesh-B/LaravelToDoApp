@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    //This migration is for when policies selects a note/record_list
     /**
      * Run the migrations.
      */
