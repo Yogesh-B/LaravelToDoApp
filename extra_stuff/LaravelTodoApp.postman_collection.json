@@ -32,7 +32,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"list_name\":\"test1\"\n}",
+					"raw": "{\n    \"list_name\":\"grocery\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -50,7 +50,7 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"lists"
+						"record_lists"
 					]
 				}
 			},
@@ -82,7 +82,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"list_name\":\"test45\"\n}",
+					"raw": "{\n    \"list_name\":\"grocery\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -90,7 +90,7 @@
 					}
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/record_lists/5",
+					"raw": "127.0.0.1:8000/api/record_lists/30",
 					"host": [
 						"127",
 						"0",
@@ -100,8 +100,8 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"lists",
-						"5"
+						"record_lists",
+						"30"
 					]
 				}
 			},
@@ -130,7 +130,13 @@
 			],
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 123123",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "127.0.0.1:8000/api/record_lists?per_page=5&page=1",
 					"host": [
@@ -142,7 +148,7 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"lists"
+						"record_lists"
 					],
 					"query": [
 						{
@@ -183,7 +189,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "127.0.0.1:8000/api/record_lists/5",
+					"raw": "127.0.0.1:8000/api/record_lists/30",
 					"host": [
 						"127",
 						"0",
@@ -193,8 +199,8 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"lists",
-						"5"
+						"record_lists",
+						"30"
 					]
 				}
 			},
@@ -235,7 +241,7 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"lists",
+						"record_lists",
 						"5"
 					]
 				}
@@ -268,7 +274,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\":\"8/6/24\",\n    \"description\":\"Bhindo, Tameta\",\n    \"is_completed\":false\n}",
+					"raw": "{\n    \"title\":\"household\",\n    \"description\":\"dishwash liquid, cloth powder, floor cleaner\",\n    \"is_completed\":false\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -276,7 +282,7 @@
 					}
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/notes/1",
+					"raw": "127.0.0.1:8000/api/notes/30",
 					"host": [
 						"127",
 						"0",
@@ -287,7 +293,7 @@
 					"path": [
 						"api",
 						"notes",
-						"1"
+						"30"
 					]
 				}
 			},
@@ -420,7 +426,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "127.0.0.1:8000/api/notes/1",
+					"raw": "127.0.0.1:8000/api/notes/7",
 					"host": [
 						"127",
 						"0",
@@ -431,7 +437,7 @@
 					"path": [
 						"api",
 						"notes",
-						"1"
+						"7"
 					]
 				}
 			},
@@ -481,6 +487,28 @@
 		},
 		{
 			"name": "Auth Register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Capture the token from the response and save it in an environment variable",
+							"const response = pm.response.json();",
+							"const token = response.token || response.access_token; // Adjust based on your API response structure",
+							"",
+							"if (token) {",
+							"    pm.environment.set(\"bearerToken\", token);",
+							"    console.log(\"Token Set Success\");",
+							"} else {",
+							"    console.error(\"Token not found in response\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -523,6 +551,7 @@
 							"",
 							"if (token) {",
 							"    pm.environment.set(\"bearerToken\", token);",
+							"    console.log(\"Token Set Success\");",
 							"} else {",
 							"    console.error(\"Token not found in response\");",
 							"}",
@@ -557,6 +586,117 @@
 					"path": [
 						"api",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth Refresh token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Capture the token from the response and save it in an environment variable",
+							"const response = pm.response.json();",
+							"const token = response.token || response.access_token; // Adjust based on your API response structure",
+							"",
+							"if (token) {",
+							"    pm.environment.set(\"bearerToken\", token);",
+							"    console.log(\"Token Set Success\");",
+							"} else {",
+							"    console.error(\"Token not found in response\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/refresh_token",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"refresh_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth profile",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/profile",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"profile"
 					]
 				}
 			},
