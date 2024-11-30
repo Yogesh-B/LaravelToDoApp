@@ -8,7 +8,6 @@ use App\Models\Note;
 use App\Models\RecordList;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
 
 class NoteController extends Controller
 {
@@ -109,10 +108,9 @@ class NoteController extends Controller
     public function store(RecordList $recordList, Request $request){
 
         $listId = $recordList->id;
-        $user = Auth::user();
 
         $recordList = Note::create([
-            'owner_id' => $user->id,
+            'owner_id' => $this->user->id,
             'record_list_id'=> $listId,
             'title'=>$request->input('title',""),
             'description'=>$request->input('description'),
