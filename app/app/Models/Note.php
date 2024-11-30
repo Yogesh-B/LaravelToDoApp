@@ -85,7 +85,7 @@ class Note extends Model
 
     public function acls(): MorphMany
     {
-        return $this->morphMany(Acl::class, 'acl');
+        return $this->morphMany(Acl::class, 'entity');
     }
 
 }

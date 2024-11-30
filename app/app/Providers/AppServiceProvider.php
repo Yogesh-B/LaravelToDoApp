@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Note;
+use App\Models\RecordList;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Relation::enforceMorphMap([
+            'list' => RecordList::class,
+            'note' => Note::class
+        ]);
     }
 }

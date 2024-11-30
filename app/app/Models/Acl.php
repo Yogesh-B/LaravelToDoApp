@@ -19,7 +19,7 @@ class Acl extends Model
         'permission',
     ];
 
-    public function acl(): MorphTo
+    public function entity(): MorphTo
     {
         return $this->morphTo(__FUNCTION__,'entity_type','entity_id');
     }

@@ -40,7 +40,11 @@ class RecordListController extends Controller
         #TODO: try catch or handle in handler for http requests
         $perPage = $request->input('per_page', 15);
 
-        return new SuccessResponse(new RecordListCollection(RecordList::paginate($perPage)),"Record Lists fetched");
+        $lists = RecordList::whereHas('acls', function ($query) {
+            $query->where('user_id', $this->user->id);
+        })->paginate($perPage);
+
+        return new SuccessResponse(new RecordListCollection($lists),"Record Lists fetched");
     }
 
 
@@ -71,6 +75,7 @@ class RecordListController extends Controller
      * )
      */
     public function show(RecordList $recordList){
+        $this->authorize('view', $recordList);
         $recordList->load('notes');
         return new SuccessResponse($recordList,"RecordList retrieved");
     }
@@ -143,6 +148,7 @@ class RecordListController extends Controller
      * )
      */
     public function update(Request $request, RecordList $recordList){
+        $this->authorize('update', $recordList);
         $recordList->update([
             'list_name'=>$request->input('list_name','')
         ]);
@@ -177,6 +183,7 @@ class RecordListController extends Controller
      * )
      */
     public function destroy(RecordList $recordList){
+        $this->authorize('delete', $recordList);
         $recordList->delete();
 
         return new SuccessResponse(["id"=>$recordList->id],"RecordList deleted successfully",Response::HTTP_OK);

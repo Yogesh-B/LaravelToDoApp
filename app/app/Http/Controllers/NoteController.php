@@ -37,9 +37,12 @@ class NoteController extends Controller
      * )
     */
     public function index(Request $request){
-        $perPage = $request->input('per_page', 15);
+        $perPage = $request->input('per_page',15);
 
-        return new SuccessResponse(new NoteCollection(Note::paginate($perPage)),"Notes fetched");
+        $notes = Note::whereHas('acls', function ($query) {
+            $query->where('user_id', $this->user->id);
+        })->paginate($perPage);
+        return new SuccessResponse(new NoteCollection($notes),"Notes fetched");
     }
     
     /**
@@ -68,6 +71,7 @@ class NoteController extends Controller
      * )
     */
     public function show(Note $note){
+        $this->authorize('view', $note);
         return new SuccessResponse($note,"Note retrieved");
     }
     
@@ -154,6 +158,7 @@ class NoteController extends Controller
      * )
     */
     public function update(Request $request, Note $note){
+        $this->authorize('update', $note);
         $note->update([
             'title'=>$request->input('title',""),
             'description'=>$request->input('description'),
@@ -195,6 +200,7 @@ class NoteController extends Controller
      * )
     */
     public function destroy(Note $note){
+        $this->authorize('delete', $note);
         $note->delete();
 
         return new SuccessResponse(["id"=>$note->id],"Note deleted successfully",Response::HTTP_OK);

@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use App\Http\Resources\FailureResponse;
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -45,7 +46,6 @@ class Handler extends ExceptionHandler
     //render the exception to json response
     public function render($request, Throwable $e)
     {
-        // dd($e);
         //JWT exceptions were not being captured separately while
         //using jwtauth as "guard", but using it as middleware
         //JWT exceptions captured separately
@@ -53,12 +53,15 @@ class Handler extends ExceptionHandler
         if ($e instanceof AuthenticationException) {
             return new FailureResponse([$e->getMessage()], 'Please login to continue', Response::HTTP_UNAUTHORIZED);
         }
-        elseif($e instanceof UniqueConstraintViolationException){
-            $pattern = "/Duplicate entry '([^']+)' for key '([^']+)'/";
-            $matches = [];
-            $count = preg_match($pattern, $e->getMessage(), $matches);
-            //OPTIONAL: update if needed
-            return new FailureResponse($matches[0], 'Duplicate entry error', Response::HTTP_INTERNAL_SERVER_ERROR);
+        // elseif($e instanceof UniqueConstraintViolationException){
+        //     $pattern = "/Duplicate entry '([^']+)' for key '([^']+)'/";
+        //     $matches = [];
+        //     $count = preg_match($pattern, $e->getMessage(), $matches);
+        //     //OPTIONAL: update if needed
+        //     return new FailureResponse($matches[0], 'Duplicate entry error', Response::HTTP_INTERNAL_SERVER_ERROR);
+        // }
+        elseif($e instanceof AuthorizationException){
+            return new FailureResponse([$e->getMessage()], 'Authorization error', Response::HTTP_FORBIDDEN);
         }
         elseif($e instanceof ValidationException){
             return new FailureResponse($e->errors(), 'Validation error', Response::HTTP_UNPROCESSABLE_ENTITY);
