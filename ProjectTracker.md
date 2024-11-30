@@ -16,7 +16,8 @@ notes..get,post,put,delete✅
 //add authentication
     - create a eloquent query for index separately in both controllers✅
     - policy to be applied in controller✅
-      
+    - owner should be able to give and revoke permissions(sharing and managing shares)  
+        - just create a new OwnerPolicy
 
 
     -  and update swagger
