@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::table('acls', function (Blueprint $table) {
             $table->index('user_id');
-            $table->index('entity_id');
+            $table->index(['entity_type','entity_id']);
+            $table->unique(['user_id','entity_type','entity_id']);
         });
     }
 
@@ -24,7 +25,8 @@ return new class extends Migration
     {
         Schema::table('acls', function (Blueprint $table) {
             $table->dropIndex(['user_id']);
-            $table->dropIndex(['entity_id']);
+            $table->dropIndex([['entity_type','entity_id']]);
+            $table->dropUnique(['user_id','entity_type','entity_id']);
         });
     }
 };
