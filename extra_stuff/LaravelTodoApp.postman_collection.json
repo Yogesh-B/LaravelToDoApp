@@ -486,6 +486,212 @@
 			"response": []
 		},
 		{
+			"name": "Show Permission",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"entity_type\":\"list\",\n    \"entity_id\":29\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/permissions/show",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"permissions",
+						"show"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Permission",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"entity_type\":\"list\",\n    \"entity_id\":29,\n    \"user_id\":2,\n    \"permission\":\"viewer\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/permissions/grant",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"permissions",
+						"grant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Permission",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"entity_type\":\"list\",\n    \"entity_id\":29,\n    \"user_id\":2,\n    \"permission\":\"owner\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/permissions/update/18",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"permissions",
+						"update",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Permission",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set the Authorization header for the current request",
+							"const token = pm.environment.get(\"bearerToken\");",
+							"if (token) {",
+							"    pm.request.headers.add({ key: \"Authorization\", value: `Bearer ${token}` });",
+							"} else {",
+							"    console.warn(\"Bearer token not found in environment variables\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/permissions/delete/18",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"permissions",
+						"delete",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Auth Register",
 			"event": [
 				{
@@ -567,7 +773,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\":\"test1@test.com\",\n    \"password\":\"123456\"\n}",
+					"raw": "{\n    \"email\":\"bapu@test.com\",\n    \"password\":\"123456\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
