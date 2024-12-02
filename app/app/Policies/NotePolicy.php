@@ -29,7 +29,7 @@ class NotePolicy
         return Acl::where('user_id', $user->id)
             ->where('entity_type', 'note')
             ->where('entity_id', $note->id)
-            ->whereIn('permission', ['edit', 'owner'])
+            ->whereIn('permission', ['editor', 'owner'])
             ->exists();
     }
 

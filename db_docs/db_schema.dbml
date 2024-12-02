@@ -47,8 +47,8 @@ Enum entity_type {
 }
 
 Enum permission {
-  view
-  edit
+  viewer
+  editor
   owner
 }
 

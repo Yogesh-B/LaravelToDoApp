@@ -29,7 +29,7 @@ class RecordListPolicy
         return Acl::where('user_id', $user->id)
             ->where('entity_type', 'list')
             ->where('entity_id', $recordList->id)
-            ->whereIn('permission', ['edit', 'owner'])
+            ->whereIn('permission', ['editor', 'owner'])
             ->exists();
     }
 
