@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Lists>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Acl>
  */
-class RecordListFactory extends Factory
+class AclFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class RecordListFactory extends Factory
     public function definition(): array
     {
         return [
-            'list_name' => fake()->sentence(3),
+            //
         ];
     }
 }

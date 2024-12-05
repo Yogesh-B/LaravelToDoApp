@@ -18,6 +18,7 @@ notes..get,post,put,delete✅
     - policy to be applied in controller✅
     - owner should be able to give and revoke permissions(sharing and managing shares)✅  
 
+- tests initial starts
 
 
 -----------REMAINING BELOW-----------
