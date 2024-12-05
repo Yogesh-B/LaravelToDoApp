@@ -108,7 +108,6 @@ class RecordListController extends Controller
     public function store(Request $request){
         #REVIEW: may want to use save method, not sure about what to use
         $recordList = RecordList::create([
-            'owner_id' => $request->user()->id,
             'list_name' => $request->list_name,
         ]);
 

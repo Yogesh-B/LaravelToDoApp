@@ -68,7 +68,6 @@ class Note extends Model
      *) 
      */
     protected $fillable = [
-        'owner_id',
         'record_list_id',
         'title',
         'description',

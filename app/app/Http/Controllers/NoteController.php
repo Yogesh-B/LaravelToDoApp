@@ -111,11 +111,8 @@ class NoteController extends Controller
     */
     public function store(RecordList $recordList, Request $request){
 
-        $listId = $recordList->id;
-
         $recordList = Note::create([
-            'owner_id' => $request->user()->id,
-            'record_list_id'=> $listId,
+            'record_list_id'=> $recordList->id,
             'title'=>$request->input('title',""),
             'description'=>$request->input('description'),
             'is_completed'=>$request->input('is_completed',false),

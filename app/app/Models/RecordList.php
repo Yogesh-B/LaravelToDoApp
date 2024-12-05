@@ -57,7 +57,6 @@ class RecordList extends Model
 
     #REVIEW: we could used some 'key' here, which we use in route for retrieving a row
     protected $fillable = [
-        'owner_id',
         'list_name',
     ];
 
