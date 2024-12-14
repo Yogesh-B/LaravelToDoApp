@@ -29,4 +29,21 @@ class RecordListControllerTest extends TestCase
         //add some assertions and other test cases also
         $response->assertStatus(200);
     }
+
+    //index shows only related record_lists
+    //gives meta links
+
+    //shows record_list
+    //error for non permission record_list
+    
+    //store works
+    //validation works
+    //acl is created for record_list-user
+
+    //update works
+    //error for non permission record_list
+
+    //delete works
+    //error for non permission record_list
+
 }

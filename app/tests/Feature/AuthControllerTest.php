@@ -25,4 +25,29 @@ class AuthControllerTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    //login works
+    //login validation works
+    //login attempt fails for non-registered user
+    //login fails for wrong email/password
+    
+
+    //register works
+    //register validation works
+    //responds with token
+    //gives error for same email
+
+
+
+    //logout works
+
+    //refresh works
+        //carbon time manipulation for getting expired error in response
+        //fail -> work
+
+
+
+    //profile test cases
+    //gives user details
+
 }

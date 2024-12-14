@@ -29,4 +29,23 @@ class NoteControllerTest extends TestCase
         //add some assertions and other test cases also
         $response->assertStatus(200);
     }
+
+
+    //index shows only related notes
+    //gives meta links
+
+    //shows note
+    //error for non permission note
+    
+    //store works
+    //validation works
+    //acl is created for note-user
+
+    //update works
+    //error for non permission note
+
+    //delete works
+    //error for non permission note
+
+
 }
