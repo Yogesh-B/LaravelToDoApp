@@ -7,3 +7,10 @@ services:
       MYSQL_DATABASE: todo
     ports:
       - "3306:3306"
+    entrypoint:
+      sh -c "
+        echo 'CREATE DATABASE IF NOT EXISTS todo; CREATE DATABASE IF NOT EXISTS todo_test;' > /docker-entrypoint-initdb.d/init.sql;
+        /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+      "
+
+
